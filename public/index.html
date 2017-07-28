@@ -24,8 +24,9 @@
                 <div class="form-group">         
                     <button onclick="handle()" class="btn btn-primary">Submit</button>
                     <button class="btn btn-default" type="button" onclick="formReset()">Reset</button>
-                </div>
-                  <img class="newImg"/>         
+                </div>               
+                  <img class="newImg"/>  
+                  <p id="new"></p>
             </form>
             <br>
 
@@ -56,6 +57,7 @@
             processData: false,
             success: function (data) {
                 $(".newImg").attr("src", data.filePath);
+          //      document.getElementById("new").innerHTML = data.url;
             },
             error: function (err) {
                 console.log(err.message);

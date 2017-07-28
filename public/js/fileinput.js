@@ -296,15 +296,12 @@
     };
     defaultFileActionSettings = {
         showRemove: true,
-        showUpload: true,
+        showUpload: false,
         showZoom: true,
         showDrag: true,
         removeIcon: '<i class="glyphicon glyphicon-trash text-danger"></i>',
         removeClass: 'btn btn-xs btn-default',
         removeTitle: 'Remove file',
-        uploadIcon: '<i class="glyphicon glyphicon-upload text-info"></i>',
-        uploadClass: 'btn btn-xs btn-default',
-        uploadTitle: 'Upload file',
         zoomIcon: '<i class="glyphicon glyphicon-zoom-in"></i>',
         zoomClass: 'btn btn-xs btn-default',
         zoomTitle: 'View Details',
@@ -328,11 +325,10 @@
         '   <div class="input-group-btn">\n' +
         '       {remove}\n' +
         '       {cancel}\n' +
-        '       {upload}\n' +
         '       {browse}\n' +
         '   </div>\n' +
         '</div>';
-    tMain2 = '{preview}\n<div class="kv-upload-progress hide"></div>\n{remove}\n{cancel}\n{upload}\n{browse}\n';
+    tMain2 = '{preview}\n<div class="kv-upload-progress hide"></div>\n{remove}\n{cancel}\n{browse}\n';
     tPreview = '<div class="file-preview {class}">\n' +
         '    {close}' +
         '    <div class="{dropClass}">\n' +
@@ -381,16 +377,13 @@
         '</div>';
     tActions = '<div class="file-actions">\n' +
         '    <div class="file-footer-buttons">\n' +
-        '        {upload} {delete} {zoom} {other}' +
+        '        {delete} {zoom} {other}' +
         '    </div>\n' +
         '    {drag}\n' +
-        '    <div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>\n' +
         '    <div class="clearfix"></div>\n' +
         '</div>';
     //noinspection HtmlUnknownAttribute
     tActionDelete = '<button type="button" class="kv-file-remove {removeClass}" ' + 'title="{removeTitle}" {dataUrl}{dataKey}>{removeIcon}</button>\n';
-    tActionUpload = '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">' +
-        '{uploadIcon}</button>';
     tActionZoom = '<button type="button" class="kv-file-zoom {zoomClass}" title="{zoomTitle}">{zoomIcon}</button>';
     tActionDrag = '<span class="file-drag-handle {dragClass}" title="{dragTitle}">{dragIcon}</span>';
     tTagBef = '<div class="file-preview-frame{frameClass}" id="{previewId}" data-fileindex="{fileindex}"' +
@@ -428,7 +421,6 @@
         footer: tFooter,
         actions: tActions,
         actionDelete: tActionDelete,
-        actionUpload: tActionUpload,
         actionZoom: tActionZoom,
         actionDrag: tActionDrag,
         btnDefault: tBtnDefault,

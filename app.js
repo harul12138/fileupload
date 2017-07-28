@@ -4,7 +4,7 @@ var multer  = require('multer')
 var path = require('path')
 var http = require("http");
 var url = require("url");
-var JSZip = require("jszip");
+var AdmZip = require('adm-zip');
 
 var app = express(); 
 
@@ -23,11 +23,20 @@ var upload = multer({storage: storage});
 
 app.post('/upload', upload.single('avatar'), function(req, res, next) {
 	var file = req.file;
-	console.log('type：%s', file.mimetype);		
+	console.log('type：%s', file.mimetype);	
+	console.log('name：%s', file.path);	
+	//var path = 'uploads/' + path.basename(req.file.path);
+
 res.send({ err: null,filePath: 'uploads/' + path.basename(req.file.path) });
 
 if(file.mimetype="application/zip"){
-
+	// reading archives
+	var zip = new AdmZip(file.path);
+	var zipEntries = zip.getEntries(); // an array of ZipEntry records
+	zipEntries.forEach(function(zipEntry) {
+	    console.log(zipEntry.entryName.toString().split("/").pop()); 
+	  //  res.render('index.html',{url:zipEntry.entryName.toString()});
+	});
 }
 	});
   
